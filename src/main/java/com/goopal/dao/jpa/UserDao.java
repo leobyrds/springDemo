@@ -1,12 +1,10 @@
-package com.goopal.dao;
+package com.goopal.dao.jpa;
 
 import com.goopal.domain.User;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
-
-import javax.annotation.Resource;
 
 
 /**
@@ -18,7 +16,7 @@ import javax.annotation.Resource;
 @Repository
 public class UserDao {
 
-	@Resource
+	//@Resource
 	private JdbcTemplate jdbcTemplate;
 
 	/**
