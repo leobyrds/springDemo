@@ -12,7 +12,7 @@ import java.util.*;
  * Created by leon on 2016/11/4.
  */
 @RestController
-@RequestMapping(value="/swagger")
+@RequestMapping(value="/users")
 public class SwaggerController {
     static Map<Long, User> users = Collections.synchronizedMap(new HashMap<Long, User>());
 
@@ -25,7 +25,7 @@ public class SwaggerController {
 
     @ApiOperation(value="创建用户", notes="根据User对象创建用户")
     @ApiImplicitParam(name = "user", value = "用户详细实体user", required = true, dataType = "User")
-    @RequestMapping(value="", method=RequestMethod.POST)
+    @RequestMapping(value="", method=RequestMethod.POST, consumes = {"application/json"})
     public String postUser(@RequestBody User user) {
         users.put(user.getId(), user);
         return "success";
@@ -43,7 +43,7 @@ public class SwaggerController {
             @ApiImplicitParam(name = "id", value = "用户ID", required = true, dataType = "Long"),
             @ApiImplicitParam(name = "user", value = "用户详细实体user", required = true, dataType = "User")
     })
-    @RequestMapping(value="/{id}", method=RequestMethod.PUT)
+    @RequestMapping(value="/{id}", method=RequestMethod.PUT, consumes = {"application/json"})
     public String putUser(@PathVariable Long id, @RequestBody User user) {
         User u = users.get(id);
         u.setName(user.getName());

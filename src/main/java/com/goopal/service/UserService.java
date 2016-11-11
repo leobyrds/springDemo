@@ -11,9 +11,15 @@ public interface UserService {
 
     public List<User> likeName(String name);
 
-    public User findById(long id);
+    public User findById(Long id);
 
-    public void deleteFromCache(long id);
+    public User save(User user);
+
+    public void deleteFromCache(Long id);
+
+    void delete(Long id);
+
+    public int updateUser(User user);
 
     void test();
 }

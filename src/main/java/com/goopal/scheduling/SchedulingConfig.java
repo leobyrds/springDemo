@@ -1,9 +1,7 @@
 package com.goopal.scheduling;
 
+import com.goopal.properties.CustomerProperties;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.scheduling.annotation.EnableScheduling;
-import org.springframework.scheduling.annotation.Scheduled;
 
 /**
  * 定时任务
@@ -11,12 +9,20 @@ import org.springframework.scheduling.annotation.Scheduled;
  * @author Administrator
  *
  */
+//@EnableConfigurationProperties
 //@Configuration
 //@EnableScheduling
 public class SchedulingConfig {
-
 //	@Autowired
 //	MailService mailService;
+	@Autowired
+	private CustomerProperties customerProperties;
+
+//	@Scheduled(cron = "0/10 * * * * ?")
+	public void print(){
+        System.out.println(customerProperties.getFile().get(0));
+        System.out.println(customerProperties.getFileFolder());
+	}
 
 //	@Scheduled(cron = "0/30 * * * * ?") // 每20秒执行一次
 	public void exportWeeklyReport() {

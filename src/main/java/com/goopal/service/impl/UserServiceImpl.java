@@ -16,7 +16,7 @@ import java.util.List;
 /**
  * Created by leon on 2016/11/8.
  */
-@Service
+@Service("UserServiceImpl")
 public class UserServiceImpl implements UserService {
     @Autowired
     private UserMapper userMappper;
@@ -32,15 +32,31 @@ public class UserServiceImpl implements UserService {
     //keyGenerator="myKeyGenerator"
     @Cacheable(value="User") //缓存,这里没有指定key.
     @Override
-    public User findById(long id) {
+    public User findById(Long id) {
         System.err.println("UserServiceImpl.findById()=========从数据库中进行获取的....id="+id);
         return userMappper.getById(id);
     }
 
+    @Override
+    public User save(User user) {
+        return null;
+    }
+
+    @Override
+    public void delete(Long id) {
+
+    }
+
+    //@CachePut
     @CacheEvict(value="User")
     @Override
-    public void deleteFromCache(long id) {
+    public void deleteFromCache(Long id) {
         System.out.println("UserServiceImpl.delete().从缓存中删除.");
+    }
+
+    @Override
+    public int updateUser(User user) {
+        return 0;
     }
 
     @Override
