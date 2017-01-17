@@ -1,9 +1,9 @@
 package com.goopal.exception;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+
+import javax.servlet.http.HttpServletRequest;
 
 @ControllerAdvice
 public class GlobalDefaultExceptionHandler {

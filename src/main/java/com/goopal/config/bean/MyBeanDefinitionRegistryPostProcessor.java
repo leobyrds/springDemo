@@ -34,13 +34,6 @@ public class MyBeanDefinitionRegistryPostProcessor implements BeanDefinitionRegi
     //bean 的名称生成器.
     private BeanNameGenerator beanNameGenerator = new AnnotationBeanNameGenerator();
 
-
-    @Override
-    public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException {
-        System.out.println("MyBeanDefinitionRegistryPostProcessor.postProcessBeanFactory()");
-
-    }
-
     /**
      * 先执行：postProcessBeanDefinitionRegistry()方法，
      * 再执行：postProcessBeanFactory()方法。
@@ -55,6 +48,18 @@ public class MyBeanDefinitionRegistryPostProcessor implements BeanDefinitionRegi
         */
         registerBean(registry, "helloWorld", HelloWorld.class);
         registerBean(registry, "helloVillage", HelloVillage.class);
+    }
+
+    @Override
+    public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException {
+        System.out.println("MyBeanDefinitionRegistryPostProcessor.postProcessBeanFactory()");
+        // 这里可以设置属性，例如
+//        BeanDefinition bd = beanFactory.getBeanDefinition("dataSourceA");
+//        MutablePropertyValues mpv =  bd.getPropertyValues();
+//        mpv.addPropertyValue("driverClassName", "com.mysql.jdbc.Driver");
+//        mpv.addPropertyValue("url", "jdbc:mysql://localhost:3306/test");
+//        mpv.addPropertyValue("username", "root");
+//        mpv.addPropertyValue("password", "123456");
     }
 
     /**

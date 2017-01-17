@@ -21,7 +21,7 @@ public interface UserMapper {
     public String getNameById(Long id);
 
     @Insert("insert into user(name,password,age) values (#{name},#{password}, #{age})")
-    @Options(useGeneratedKeys = true, keyProperty = "id")
+    @Options(useGeneratedKeys = true, keyProperty = "id", keyColumn = "id")
     public int save( User user);
 
     @Update("update user set name = #{name}, password = #{password}, age = #{age} where id = #{id}")

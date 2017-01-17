@@ -67,9 +67,9 @@
 
         <Async name="async" bufferSize="1024000">
             <appender-ref ref="Console"/>
-            <appender-ref ref="RollingFileInfo"/>
-            <appender-ref ref="RollingFileWarn"/>
-            <appender-ref ref="RollingFileError"/>
+            <!--<appender-ref ref="RollingFileInfo"/>-->
+            <!--<appender-ref ref="RollingFileWarn"/>-->
+            <!--<appender-ref ref="RollingFileError"/>-->
         </Async>
 
 
@@ -84,17 +84,17 @@
 
 
         <!--建立一个默认的root的logger-->
-        <!--<root level="info">
+        <!----><root level="info">
             <appender-ref ref="async"/>
-        </root>-->
+        </root>
     </loggers>
 
-    <!-- 测试环境+开发环境. 多个使用逗号隔开.
+
     <springProfile name="dev">
         <logger name="org.springframework.web" level="INFO"/>
         <logger name="org.springboot.sample" level="INFO" />
         <logger name="com.goopal" level="INFO" />
-    </springProfile>
+    </springProfile><!-- 测试环境+开发环境. 多个使用逗号隔开.
     <springProfile name="qas">
         <logger name="org.springframework.web" level="ERROR"/>
         <logger name="org.springboot.sample" level="ERROR" />

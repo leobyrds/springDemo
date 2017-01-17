@@ -3,10 +3,8 @@ package com.goopal;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
+import org.springframework.context.ApplicationContext;
 import org.springframework.scheduling.annotation.EnableAsync;
-import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
-import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 
 //@EnableRedisHttpSession
 //@ServletComponentScan
@@ -51,8 +49,13 @@ public class SpringDemoApplication {
         SpringApplication springApplication = new SpringApplication();
         //屏蔽命令行访问属性的设置
         springApplication.setAddCommandLineProperties(false);
-        springApplication.run(SpringDemoApplication.class, args);
+        ApplicationContext ctx =  springApplication.run(SpringDemoApplication.class, args);
 //        SpringApplication.run(SpringDemoApplication.class, args);
+//        String[] beanNames =  ctx.getBeanNamesForAnnotation(Configuration.class);//.getBeanDefinitionNames();
+//        System.out.println("所以beanNames个数："+beanNames.length);
+//        for(String bn:beanNames){
+//            System.out.println(bn);
+//        }
 
 	}
 
@@ -64,7 +67,7 @@ public class SpringDemoApplication {
         //设置默认区域,
         slr.setDefaultLocale(Locale.CHINA);
         return slr;
-    }*/
+    }
 
 
     @Bean
@@ -77,5 +80,5 @@ public class SpringDemoApplication {
 
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(localeChangeInterceptor());
-    }
+    }*/
 }

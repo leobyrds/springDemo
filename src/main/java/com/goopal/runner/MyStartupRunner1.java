@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
 public class MyStartupRunner1 implements CommandLineRunner {
 
     protected final Logger logger = LoggerFactory.getLogger(this.getClass());
- 
+
     @Override
     public void run(String... args) throws Exception {
         logger.info(">>>>>>>>>>>>>>>服务启动执行，执行加载数据等操作 11111111 <<<<<<<<<<<<<");

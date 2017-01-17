@@ -5,11 +5,15 @@ import com.goopal.domain.User;
 import com.goopal.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
+
+import static com.goopal.controller.SwaggerController.users;
 
 /**
  * Created by leon on 2016/11/8.
@@ -39,6 +43,19 @@ public class UserController {
         return "ok";
     }
 
+    @RequestMapping(value="", method= RequestMethod.POST, consumes = {"application/json"})
+    public String postUser(@RequestBody @Valid User user, BindingResult result, Model model) {
+        users.put(user.getId(), user);
+        if(result.hasErrors()){
+            List<ObjectError>  list = result.getAllErrors();
+            for(ObjectError  error:list){
+                System.out.println(error.getCode()+"---"+error.getArguments()+"---"+error.getDefaultMessage());
+            }
+
+            return "demo";
+        }
+        return "success";
+    }
 
     @RequestMapping("/delete")
     @ResponseBody
